@@ -1,92 +1,121 @@
 
 
 
+  $("button").on("click", function () {
 
-var games = ["Sonic Generations", "Doom", "Cyberpunk 2077"];
+    var game = $(this).attr("data-game");
 
-// displayMovieInfo function re-renders the HTML to display the appropriate content
-function displayGameInfo() {
 
-  var game = $(this).attr("data-game");
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        game + "&api_key=qWoKMfLc0NsHroDiBTBWxz1G6XT4Qqii&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+      game + "&api_key=qWoKMfLc0NsHroDiBTBWxz1G6XT4Qqii&limit=10";
 
-  
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    
-    var gameDiv = $("<div>");
-    // Creating a div to hold the game
-    var gameDiv = $("<div class='game'>");
 
-    // Storing the rating data
-    var rating = response.Rated;
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function (response) {
+        var results = response.data
+        console.log(queryURL);
 
-    // Creating an element to have the rating displayed
-    var p = $("<p>").text("Rating: " + rating);
+        console.log(response);
 
-    // Displaying the rating
-    gameDiv.append(p);
+        var results = response.data;
 
-    // Retrieving the URL for the image
-    var images = $("<img>");
 
-    // Creating an element to hold the image
-   images.attr("src", images.fixed_height.url);
+        for (var i = 0; i < results.length; i++) {
 
-    // Appending the image
-    gameDiv.append(image);
 
-    
-    $("#gifs-appear-here").prepend(gameDiv);
+          var gameDiv = $("<div>");
+
+
+          var p = $("<p>").text("Rating: " + results[i].rating);
+
+
+          var gameImage = $("<img>");
+
+          gameImage.attr("src", results[i].images.fixed_height.url);
+
+
+          gameDiv.append(p);
+          gameDiv.append(gameImage);
+
+
+          $("#gifs-appear-here").prepend(gameDiv);
+        }
+      });
   });
 
-}
+// function renderButtons(){
+//     $("#buttons-view").empty();
+
+//     for(var i = 0; i< games.length; i++){
+//         var a = $("<button>");
+
+//         a.addClass("game-btn");
+
+//         a.attr("data-name", games[i]);
+
+//         a.text(games[i]);
+
+//         $("#buttons-view").append(a);
+//     }
+
+// } 
+
+// function renderButtons(){
+//     $("#buttons-view").empty();
+
+//     for(var i = 0; i< games.length; i++){
+//         var a = $("<button>");
+
+//         a.addClass("game-btn");
+
+//         a.attr("data-name", games[i]);
+
+//         a.text(games[i]);
+
+//         $("#buttons-view").append(a);
+//     }
+
+// } 
 
 
-function renderButtons() {
-
-  
-  $("#buttons-view").empty();
-
-  
-  for (var i = 0; i < games.length; i++) {
-
-    
-    var a = $("<button>");
-  
-    a.addClass("game-btn");
-    
-    a.attr("data-game", games[i]);
-    
-    a.text(games[i]);
-    
-    $("#buttons-view").append(a);
-  }
-}
+// function renderButtons() {
 
 
-$("#add-game").on("click", function(event) {
-  event.preventDefault();
-  
-  var game = $("#game-input").val().trim();
-
-  
-  games.push(game);
-
-  
-  renderButtons();
-});
+//   $("#buttons-view").empty();
 
 
-$(document).on("click", ".game-btn", displayGameInfo);
+//   for (var i = 0; i < games.length; i++) {
 
 
-renderButtons();
+//     var a = $("<button>");
+
+//     a.addClass("game-btn");
+
+//     a.attr("data-game", games[i]);
+
+//     a.text(games[i]);
+
+//     $("#buttons-view").append(a);
+//   }
+// }
 
 
+// $("#add-game").on("click", function(event) {
+//   event.preventDefault();
 
-    
-   
+//   var game = $("#game-input").val().trim();
+
+
+//   games.push(game);
+
+
+//   renderButtons();
+// });
+
+
+// $(document).on("click", ".game-btn", displayGameInfo);
+
+
+// renderButtons();
