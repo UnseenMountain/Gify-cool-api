@@ -38,32 +38,6 @@ console.log(queryURL)
 
           $("#gifs-appear-here").prepend(gameDiv);
         }
-    
-    
-    // var gameDiv = $("<div>");
-    // // Creating a div to hold the game
-    // var gameDiv = $("<div class='game'>");
-
-    // // Storing the rating data
-    // var rating = response.Rated;
-
-    // // Creating an element to have the rating displayed
-    // var p = $("<p>").text("Rating: " + rating);
-
-    // // Displaying the rating
-    // gameDiv.append(p);
-
-    // // Retrieving the URL for the image
-    // var images = $("<img>");
-
-    // // Creating an element to hold the image
-    // images.attr("src", images.fixed_height.url);
-
-    // // Appending the image
-    // gameDiv.append(image);
-
-
-    // $("#gifs-appear-here").prepend(gameDiv);
   });
 
 };
@@ -93,6 +67,20 @@ $("#add-game").on("click", function (event) {
   renderButtons();
 });
 $(document).on("click", ".game-btn", displayGameInfo);
+ $(".gif").on("click", function() {
+      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+      var state = $(this).attr("data-state");
+      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+      // Then, set the image's data-state to animate
+      // Else set src to the data-still value
+      if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+      } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+      }
+    });
 renderButtons();
 
 
