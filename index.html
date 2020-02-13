@@ -6,13 +6,31 @@
   <title>Game gifs</title>
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  
+    <div class="container">
+      <div class="notification">
 
-  <div class="container">
-    <h1>Gify api</h1>
+        <section class="hero is-info">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                Gify api
+              </h1>
+              <h2 class="subtitle">
+                Search your favorite gifs here and the computer will spit out 10 images based on your search.
+                Or use the demo buttons provided for you below.
+              </h2>
+            </div>
+          </div>
+        </section>
+    
     <!-- <button data-game="Sonic Generations">Sonic</button>
     <button data-game="Halo 2">Halo</button>
     <button data-game="Cyberpunk 2077">Cyberpunk</button>
@@ -22,7 +40,7 @@
     <div  role="button" id="buttons-view"></div>
 
     <form id="game-form">
-      <label for="game-input">Add a game!</label>
+      <label for="game-input" class="bright">Add a game!</label>
       <input type="text" id="game-input">
       <br>
 
@@ -31,9 +49,9 @@
       <!-- Button triggers new gif to be added  -->
 
      
-      <input class="btn btn-primary" id="add-game" class="empty" type="submit" value="please select a character">
+      <input class="button is-primary is-rounded" id="add-game" class="empty" type="submit" value="please select a character">
     
-      <h1>Press the Gif to play it!</h1>
+      <h1 class="bright">Press the Gif to play it!</h1>
     </form>
     <img
       src="https://media0.giphy.com/media/jVAt83ieT49H6ja5Ty/…5b70fb00eb02fd46cca2eb430&rid=giphy-downsized/200_s.gif"
@@ -54,7 +72,6 @@
     <div id="gifs-appear-here">
 
     </div>
-
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -66,6 +83,14 @@
   <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script> -->
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Gifi</strong> by <a href="https://github.com/UnseenMountain/Gify-cool-api">Luke Klymshyn</a>. The source code is licensed by myself</a>. 
+      </p>
+    </div>
+  </footer>
 </body>
 
 </html>
