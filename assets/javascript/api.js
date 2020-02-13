@@ -8,36 +8,36 @@ function displayGameInfo() {
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     game + "&api_key=qWoKMfLc0NsHroDiBTBWxz1G6XT4Qqii&limit=10";
 
-console.log(queryURL)
+  console.log(queryURL)
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
-    
+
     var results = response.data;
 
 
-        for (var i = 0; i < results.length; i++) {
+    for (var i = 0; i < results.length; i++) {
 
 
-          var gameDiv = $("<div>");
-          var gameDiv = $("<div class='game'>");
+      var gameDiv = $("<div>");
+      var gameDiv = $("<div class='game'>");
 
-          var p = $("<p>").text("Rating: " + results[i].rating);
-
-
-          var gameImage = $("<img>");
-
-          gameImage.attr("src", results[i].images.fixed_height.url);
+      var p = $("<p>").text("Rating: " + results[i].rating);
 
 
-          gameDiv.append(p);
-          gameDiv.append(gameImage);
+      var gameImage = $("<img>");
+
+      gameImage.attr("src", results[i].images.fixed_height.url);
 
 
-          $("#gifs-appear-here").prepend(gameDiv);
-        }
+      gameDiv.append(p);
+      gameDiv.append(gameImage);
+
+
+      $("#gifs-appear-here").prepend(gameDiv);
+    }
   });
 
 };
@@ -67,20 +67,20 @@ $("#add-game").on("click", function (event) {
   renderButtons();
 });
 $(document).on("click", ".game-btn", displayGameInfo);
- $(".gif").on("click", function() {
-      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-      var state = $(this).attr("data-state");
-      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-      // Then, set the image's data-state to animate
-      // Else set src to the data-still value
-      if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
-      } else {
-        $(this).attr("src", $(this).attr("data-still"));
-        $(this).attr("data-state", "still");
-      }
-    });
+$(".gif").on("click", function () {
+  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+  var state = $(this).attr("data-state");
+  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+  // Then, set the image's data-state to animate
+  // Else set src to the data-still value
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+});
 renderButtons();
 
 
