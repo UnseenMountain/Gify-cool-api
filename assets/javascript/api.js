@@ -50,6 +50,8 @@ function renderButtons() {
 
     var a = $("<button>");
     a.addClass("game-btn");
+    // add the fancy class to the btton
+    a.addClass("button is-primary is-rounded")
 
     a.attr("data-game", games[i]);
 
@@ -62,9 +64,13 @@ function renderButtons() {
 
 $("#add-game").on("click", function (event) {
   event.preventDefault();
-  var game = $("#game-input").val().trim();
-  games.push(game);
-  renderButtons();
+  //TODO: if there is text, create a button
+  var game = $("#game-input").val().trim(); // grabs input value/text
+  if (game) {
+    games.push(game); // games is an array of buttons
+    renderButtons(); 
+  }
+ 
 });
 $(document).on("click", ".game-btn", displayGameInfo);
 $(".gif").on("click", function () {
